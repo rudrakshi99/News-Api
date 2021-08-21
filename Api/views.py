@@ -6,7 +6,6 @@ from rest_framework.generics import (ListAPIView, CreateAPIView, RetrieveUpdateD
 from .models import News
 from .serializer import NewsSerializer
 from .pagination import MyPageNumberPagination
-from .task import task_news_update
 
 
 
@@ -72,10 +71,4 @@ class NewsUpdateAPI(RetrieveUpdateDestroyAPIView):
 
 
 
-def latest(request):
-    try:
-        task_news_update.delay(3600)
-        return HttpResponse("Latest Data Fetched from Google News")
-    
-    except Exception as e:
-        return HttpResponse(f"Failed {e}")
+
