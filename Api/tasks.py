@@ -17,8 +17,7 @@ params = {
 }
 
 @shared_task
-def task_news_update(request):
-        # print("Task started")
+def task_news_update():
         response = requests.get("https://www.google.com/search", headers=headers, params=params)
         soup = BeautifulSoup(response.text, 'lxml')
         for result in soup.select('.dbsr'):

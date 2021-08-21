@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import  NewsAPI, latest, NewsCreateAPI, NewsUpdateAPI
+from .views import  NewsAPI, NewsCreateAPI, NewsUpdateAPI
 
 urlpatterns = [
     path('', NewsAPI.as_view(), name="news_api"),
