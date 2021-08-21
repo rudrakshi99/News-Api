@@ -18,7 +18,7 @@ params = {
 
 @shared_task
 def task_news_update(request):
-    try:
+        # print("Task started")
         response = requests.get("https://www.google.com/search", headers=headers, params=params)
         soup = BeautifulSoup(response.text, 'lxml')
         for result in soup.select('.dbsr'):
@@ -30,9 +30,6 @@ def task_news_update(request):
             
             news = News(title=title, link=link, source=source, snippet=snippet, date_published=date_published)
             news.save()
-            print(f'{title}\n{link}\n{snippet}\n{date_published}\n{source}\n')
+            # print(f'{title}\n{link}\n{snippet}\n{date_published}\n{source}\n')
         
-        return HttpResponse("Latest Data Fetched from Google News")
-    
-    except Exception as e:
-        return HttpResponse(f"Failed {e}")
+       

@@ -73,5 +73,9 @@ class NewsUpdateAPI(RetrieveUpdateDestroyAPIView):
 
 
 def latest(request):
-    task_news_update.delay(1)
+    try:
+        task_news_update.delay(3600)
+        return HttpResponse("Latest Data Fetched from Google News")
     
+    except Exception as e:
+        return HttpResponse(f"Failed {e}")
