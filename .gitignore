@@ -73,7 +73,7 @@ pytestdebug.log
 # Django stuff:
 __pycache__/
 migrations/__pycache__
-**/migrations
+
 !**/migrations/__init__.py
 evn/migrations/*
 .evn/migrations/*
