@@ -3,7 +3,7 @@ from datetime import timezone
 import os
 from celery import Celery
 from django.conf import settings
-from celery.schedules import crontab
+from celery.schedules import crontab, schedule
 
 # set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'NewsApi.settings')
@@ -12,7 +12,7 @@ app = Celery('NewsApi')
 app.conf.beat_schedule = {
     'add-every-1-hour': {
         'task': 'Api.tasks.task_news_update',
-        'schedule': crontab(hour=1, minute=0),
+        'schedule': crontab(minute=0, hour='*/1'),
     }
 }
 
