@@ -141,5 +141,6 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SELERLIZER = 'json'
 CELERY_TIMEZONE = 'Asia/Kolkata'
+CELERY_RESULT_BACKEND = "django-db"
 
 django_heroku.settings(locals())
